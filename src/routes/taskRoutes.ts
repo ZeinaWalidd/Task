@@ -1,7 +1,8 @@
-import express from 'express';
-const router = express.Router();
+import express, { Router } from 'express';
 import { getTasks, createTask, updateTask, deleteTask } from '../controllers/taskController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
+
+const router: Router = express.Router();
 
 router.use(authMiddleware);
 
