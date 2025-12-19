@@ -1,12 +1,12 @@
-const prisma = require('../prisma/client');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+import prisma from '../prisma/client.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import 'dotenv/config';
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
 // Signup
-exports.signup = async (req, res) => {
+export const signup = async (req, res) => {
   try {
     const { fullName, email, password } = req.body;
 
@@ -42,7 +42,7 @@ exports.signup = async (req, res) => {
 };
 
 // Signin
-exports.signin = async (req, res) => {
+export const signin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -55,6 +55,7 @@ exports.signin = async (req, res) => {
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
+    
     if (!isMatch) {
       return res.status(400).json({ message: 'Incorrect password' });
     }

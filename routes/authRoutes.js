@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const { signup, signin } = require('../controllers/authController');  
-const { body, validationResult } = require('express-validator');
+import { signup, signin } from '../controllers/authController.js';
+import { body, validationResult } from 'express-validator';
 
 const signupValidation = [
   body('fullName').notEmpty().withMessage('Full name is required'),
@@ -22,6 +22,6 @@ const validate = (req, res, next) => {
 };
 
 router.post('/signup', signupValidation, validate, signup);
-router.post('/signin', signin); 
+router.post('/signin', signin);
 
-module.exports = router;
+export default router;

@@ -1,6 +1,6 @@
-const prisma = require('../prisma/client');
+import prisma from '../prisma/client.js';
 
-exports.getTasks = async (req, res) => {
+export const getTasks = async (req, res) => {
   try {
     const tasks = await prisma.tasks.findMany({
       where: { userId: req.userId },
@@ -11,7 +11,7 @@ exports.getTasks = async (req, res) => {
   }
 };
 
-exports.createTask = async (req, res) => {
+export const createTask = async (req, res) => {
   try {
     const { title, description } = req.body;
 
@@ -32,7 +32,7 @@ exports.createTask = async (req, res) => {
   }
 };
 
-exports.updateTask = async (req, res) => {
+export const updateTask = async (req, res) => {
   try {
     const { title, description, completed } = req.body;
     const taskId = parseInt(req.params.id);
@@ -58,7 +58,7 @@ exports.updateTask = async (req, res) => {
   }
 };
 
-exports.deleteTask = async (req, res) => {
+export const deleteTask = async (req, res) => {
   try {
     const taskId = parseInt(req.params.id);
 

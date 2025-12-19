@@ -1,10 +1,9 @@
-require('dotenv').config();
-
-const express = require('express');
-const cors = require('cors');
-const authRoutes = require('./routes/authRoutes');
-const taskRoutes = require('./routes/taskRoutes');
-const prisma = require('./prisma/client');
+import 'dotenv/config';
+import express from 'express';
+import cors from 'cors';
+import authRoutes from './routes/authRoutes.js';
+import taskRoutes from './routes/taskRoutes.js';
+import prisma from './prisma/client.js';
 
 const app = express();
 
@@ -13,7 +12,6 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
-
 
 const PORT = process.env.PORT || 3000;
 
