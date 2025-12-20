@@ -32,7 +32,6 @@ A secure, production-ready task management application with user authentication 
 * MySQL database
 * JWT for authentication
 * bcryptjs for password hashing
-* swagger-ui-express + swagger-jsdoc for API documentation
 
 ---
 
@@ -68,7 +67,7 @@ Create a `.env` file inside the `Backend` folder:
 ```env
 DATABASE_URL="mysql://root:@localhost:3306/task_manager"
 PORT=9999
-JWT_SECRET=your_super_secret_jwt_key
+JWT_SECRET=793dc845bac7bb643bd42e8df6679e4098be52f717a5ec46319ed24f50a90f6cd2384959cabc2fd1db89a576cc3260987c77230c3d52ec994538d5fb94f53bbe
 ```
 
 Run the backend server:
