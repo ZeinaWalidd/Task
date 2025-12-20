@@ -133,8 +133,3 @@ task-manager-api.postman_collection.json
 * Prisma for clean, maintainable database operations
 
 ---
-
-## Author
----
-**Zeina Walid**
-**Date:** December 20, 2025
