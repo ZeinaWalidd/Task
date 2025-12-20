@@ -21,7 +21,6 @@ export const signup = async (req: SignupRequest, res: Response): Promise<void> =
     const result = await AuthService.signup(req.body);
     res.status(201).json(result);
   } catch (error) {
-    console.error('Signup error:', error);
     const message = error instanceof Error ? error.message : 'Unknown error';
     res.status(400).json({ message: 'Signup failed', error: message });
   }
@@ -32,7 +31,6 @@ export const signin = async (req: SigninRequest, res: Response): Promise<void> =
     const result = await AuthService.signin(req.body);
     res.json(result);
   } catch (error) {
-    console.error('Signin error:', error);
     const message = error instanceof Error ? error.message : 'Unknown error';
     res.status(400).json({ message: 'Signin failed', error: message });
   }

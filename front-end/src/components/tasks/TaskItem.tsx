@@ -67,7 +67,6 @@ export default function TaskItem({
         )}
       </Box>
 
-      {/* Actions */}
       <Stack direction="row" spacing={1}>
         <Tooltip title="Edit">
           <Fab

@@ -15,7 +15,6 @@ export const getTasks = async (req: CustomRequest, res: Response): Promise<void>
     const tasks = await TaskService.getTasks(req.userId as number);
     res.json(tasks);
   } catch (error) {
-    console.error('Get tasks error:', error);
     res.status(500).json({ message: 'Server error', error: error instanceof Error ? error.message : 'Unknown error' });
   }
 };
@@ -31,7 +30,6 @@ export const createTask = async (req: CustomRequest, res: Response): Promise<voi
     });
     res.status(201).json(task);
   } catch (error) {
-    console.error('Create task error:', error);
     const message = error instanceof Error ? error.message : 'Unknown error';
     res.status(400).json({ message: 'Failed to create task', error: message });
   }
@@ -49,7 +47,6 @@ export const updateTask = async (req: CustomRequest, res: Response): Promise<voi
     });
     res.json(task);
   } catch (error) {
-    console.error('Update task error:', error);
     const message = error instanceof Error ? error.message : 'Unknown error';
     const statusCode = message === 'Task not found' ? 404 : 400;
     res.status(statusCode).json({ message: 'Failed to update task', error: message });
@@ -63,7 +60,6 @@ export const deleteTask = async (req: CustomRequest, res: Response): Promise<voi
     const result = await TaskService.deleteTask(taskId, req.userId as number);
     res.json(result);
   } catch (error) {
-    console.error('Delete task error:', error);
     const message = error instanceof Error ? error.message : 'Unknown error';
     const statusCode = message === 'Task not found' ? 404 : 400;
     res.status(statusCode).json({ message: 'Failed to delete task', error: message });

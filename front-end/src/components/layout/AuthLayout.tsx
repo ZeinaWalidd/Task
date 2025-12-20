@@ -18,7 +18,7 @@ export default function AuthLayout({
       display="flex"
       alignItems="center"
       justifyContent="center"
-      bgcolor="grey.100"
+      bgcolor="background.default"
     >
       <Paper
         elevation={3}

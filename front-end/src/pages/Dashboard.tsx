@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-import { Box, AppBar, Toolbar, Typography, IconButton, Tooltip, Paper } from '@mui/material';
+import { Box, AppBar, Toolbar, Typography, IconButton, Tooltip } from '@mui/material';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 
 import TaskForm from '../components/tasks/TaskForm';
 import TaskList from '../components/tasks/TaskList';
@@ -66,6 +67,7 @@ export default function Dashboard() {
     <Box minHeight="100vh" bgcolor="background.default">
       <AppBar position="static" color="inherit" elevation={1}>
         <Toolbar sx={{ maxWidth: 1200, mx: 'auto', width: '100%' }}>
+          <AssignmentIcon sx={{fontSize:25, color: 'primary.main', marginRight: 1}} />
           <Typography variant="h6" fontWeight={700} sx={{ flexGrow: 1, color: 'primary.main'}}>
             My Tasks
           </Typography>
@@ -76,26 +78,21 @@ export default function Dashboard() {
 
           <Tooltip title="Logout">
             <IconButton onClick={() => setLogoutOpen(true)}>
-              <LogoutOutlinedIcon />
+              <LogoutOutlinedIcon sx={{color: 'primary.main'}}/>
             </IconButton>
           </Tooltip>
         </Toolbar>
       </AppBar>
 
       <Box maxWidth={1200} mx="auto" px={2} py={4}>
-        <Paper sx={{ p: 3, mb: 4 }} elevation={2}>
-          <Typography variant="h6" fontWeight={600} mb={2}>
-            {editingTask ? 'Edit Task' : 'Add New Task'}
-          </Typography>
-
           <TaskForm
-            onSubmit={handleSubmitTask}
+            onSubmit={handleSubmitTask}  
             initialTitle={editingTask?.title}
             initialDescription={editingTask?.description || ''}
             onCancel={() => setEditingTask(null)}
+            formTitle={editingTask ? 'Edit Task' : 'Add New Task'}
           />
-        </Paper>
-
+        
         <TaskList
           tasks={tasks}
           onToggle={handleToggleTask}
